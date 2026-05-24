@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.Python
+*.so
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+
+# Build / dist
+build/
+dist/
+pip-wheel-metadata/
+
+# MkDocs
+site/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local analysis output
+output/
+output-*/
+tmp/
+
+# Secrets / local config overrides
+.env
+.env.local
+*.local.toml
