@@ -1,0 +1,124 @@
+site_name: KMP-IMPACT
+site_description: Reviewing Dependency Updates in Kotlin Multiplatform — a thesis-grade impact analyzer.
+site_author: Esteban Castel
+site_url: https://estebancastel.github.io/KMP-IMPACT-Reviewing-Dependency-Updates-in-Kotlin-Multiplatform/
+repo_name: EstebanCastel/KMP-IMPACT-Reviewing-Dependency-Updates-in-Kotlin-Multiplatform
+repo_url: https://github.com/EstebanCastel/KMP-IMPACT-Reviewing-Dependency-Updates-in-Kotlin-Multiplatform
+edit_uri: edit/main/docs/
+copyright: Copyright &copy; 2026 Esteban Castel — MIT License
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.action.edit
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+
+nav:
+  - Home: index.md
+  - Getting started:
+      - getting-started/index.md
+      - Requirements: getting-started/requirements.md
+      - Installation: getting-started/installation.md
+      - Quickstart: getting-started/quickstart.md
+  - Usage:
+      - usage/index.md
+      - CLI reference: usage/cli.md
+      - Scenarios: usage/scenarios.md
+      - GitHub Action: usage/github-action.md
+  - Architecture:
+      - architecture/index.md
+      - Pipeline overview: architecture/overview.md
+      - Phase contracts: architecture/phases.md
+      - Data contracts: architecture/contracts.md
+  - Presets:
+      - presets/index.md
+      - Pokedex: presets/pokedex.md
+      - Confetti: presets/confetti.md
+      - DroidconKotlin: presets/droidcon-kotlin.md
+      - KMP-App-Template: presets/kmp-app-template.md
+      - kmp-production-sample: presets/kmp-production-sample.md
+  - Evaluation:
+      - evaluation/index.md
+      - Methodology: evaluation/methodology.md
+      - Results: evaluation/results.md
+  - Troubleshooting: troubleshooting.md
+  - Changelog: changelog.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.snippets:
+      base_path: ["."]
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/EstebanCastel
+  generator: false
+
+extra_css:
+  - stylesheets/extra.css
