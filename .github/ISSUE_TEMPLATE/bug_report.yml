@@ -1,0 +1,60 @@
+name: Bug report
+description: The analyzer produced wrong or unexpected output.
+title: "[bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug report. Please attach the analyzer output (`output/report/index.html` and `output/phase4/consolidated.json`) when relevant.
+  - type: input
+    id: version
+    attributes:
+      label: KMP-IMPACT version
+      description: "`kmp-impact --version` or commit SHA"
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      placeholder: "3.12.1"
+    validations:
+      required: true
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Which phase produced the wrong result?
+      options:
+        - Phase 1 — Shadow build
+        - Phase 2 — Static analysis
+        - Phase 3 — Dynamic (DroidBot)
+        - Phase 4 — Consolidation
+        - Phase 5 — Visualization
+        - Reporting / HTML
+        - CLI / orchestration
+        - Don't know
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you expect, and what did you get instead?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction
+      description: Exact command(s), repo URL/SHA, and the `libs.versions.toml` diff if applicable.
+      render: bash
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / artifacts
+      description: Paste relevant log lines or attach the `output/` directory.
+      render: shell

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussions
+    url: https://github.com/EstebanCastel/KMP-IMPACT-Reviewing-Dependency-Updates-in-Kotlin-Multiplatform/discussions
+    about: Design questions, ideas, "how do I…?" — please use Discussions before opening an issue.
+  - name: Documentation
+    url: https://estebancastel.github.io/KMP-IMPACT-Reviewing-Dependency-Updates-in-Kotlin-Multiplatform/
+    about: Installation, CLI reference, architecture, presets and troubleshooting.
