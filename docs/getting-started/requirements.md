@@ -95,6 +95,9 @@ In CI (GitHub Actions) the [reference workflow](../guides/github-actions.md) han
 
 ## What if my project doesn't meet the prerequisites?
 
-KMP-IMPACT will tell you. Whenever the APK cannot be built or DroidBot cannot reach a UTG, the pipeline emits a `BLOCKED` status with an explicit `blocked_reason` rather than producing a mock result.
+Two options:
+
+- **Adapt your project.** Follow [Guides → Preparing an existing KMP project](../guides/preparing-a-kmp-project.md) — a nine-step checklist that takes an arbitrary KMP repo from "as-is" to "ready to install KMP-IMPACT".
+- **Ship as-is and accept the limitations.** KMP-IMPACT will tell you when something is wrong. Whenever the APK cannot be built or DroidBot cannot reach a UTG, the pipeline emits a `BLOCKED` status with an explicit `blocked_reason` rather than producing a mock result.
 
 See [Troubleshooting](../troubleshooting.md) for the catalogue of known blockers and the matching diagnosis flow.

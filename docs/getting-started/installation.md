@@ -51,4 +51,5 @@ If those commands respond, the installation is complete — head to the [Quickst
 - [Quickstart](quickstart.md) — run a first analysis on a sample KMP project.
 - [Requirements](requirements.md) — make sure your target KMP project meets the prerequisites.
 - [What gets installed](what-gets-installed.md) — understand the disk, network, and dependency footprint.
+- [Guides → Preparing an existing KMP project](../guides/preparing-a-kmp-project.md) — checklist to adapt a real KMP repo before wiring CI.
 - [Guides → How everything talks to each other](../guides/how-it-works.md) — see the runtime flow before wiring the workflow into a real repo.

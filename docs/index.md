@@ -8,7 +8,7 @@ hide:
 KMP-IMPACT is a PR-native dependency-impact analyzer for **Kotlin Multiplatform** projects. It runs as a GitHub Actions workflow on every pull request that modifies `gradle/libs.versions.toml` and turns the version-catalog diff into source-set-aware review evidence: direct and transitive Kotlin files, detected `expect`/`actual` pairs, optional Android UI-transition diffs, and a navigable HTML report linked from the PR comment.
 
 <div class="kmp-callout" markdown>
-**New here?** Start with [Installation](getting-started/installation.md), then run a first analysis from the [Quickstart](getting-started/quickstart.md). Wiring it into CI? Jump to [Configuring GitHub Actions](guides/github-actions.md).
+**New here?** Start with [Installation](getting-started/installation.md), then run a first analysis from the [Quickstart](getting-started/quickstart.md). Wiring it into an existing KMP repo? Start with the [Preparing an existing KMP project](guides/preparing-a-kmp-project.md) checklist, then run the [Configuring GitHub Actions](guides/github-actions.md) install.
 </div>
 
 ## Documentation map

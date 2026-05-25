@@ -64,10 +64,11 @@ nav:
       - Quickstart: getting-started/quickstart.md
   - Guides:
       - guides/index.md
-      - Analyzing a bump locally: guides/analyzing-locally.md
-      - How everything talks to each other: guides/how-it-works.md
+      - Preparing an existing KMP project: guides/preparing-a-kmp-project.md
       - Configuring GitHub Actions: guides/github-actions.md
       - Configuring Dependabot: guides/dependabot.md
+      - How everything talks to each other: guides/how-it-works.md
+      - Analyzing a bump locally: guides/analyzing-locally.md
       - Writing Scenarios: guides/scenarios.md
       - Reading the Report: guides/reading-the-report.md
       - Diagnosing a BLOCKED phase: guides/diagnosing-blocked.md

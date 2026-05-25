@@ -72,6 +72,7 @@ If either APK fails to build, the report will mark the dynamic phase `BLOCKED` w
 
 ## 5. Where to go next
 
+- Adapt your own KMP repo with the [Preparing an existing KMP project](../guides/preparing-a-kmp-project.md) checklist before wiring it up.
 - Plug it into a real PR flow with the [GitHub Action guide](../guides/github-actions.md).
 - Read the [Pipeline overview](../architecture/pipeline-overview.md) to understand what each phase contributes.
 - Browse the [Presets](../presets/index.md) for ready-to-fork examples per KMP project.

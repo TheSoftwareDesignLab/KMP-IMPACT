@@ -2,6 +2,10 @@
 
 Wire KMP-IMPACT into a target repository so the pipeline runs on every pull request that touches `gradle/libs.versions.toml`. The workflow checks out BEFORE and AFTER, builds the APKs, runs the full pipeline, publishes the HTML report to GitHub Pages, and comments on the PR.
 
+<div class="kmp-callout" markdown>
+**Before you start.** This guide assumes your KMP project already meets the prerequisites in [Requirements](../getting-started/requirements.md). If it doesn't (Kotlin 2.x without the Compose Compiler plugin, a non-standard Android module name, an old Gradle wrapper, …), work through [Preparing an existing KMP project](preparing-a-kmp-project.md) first — it is a nine-step checklist that takes ~15 minutes for a typical repo.
+</div>
+
 ## Files to install
 
 Drop two files into the target repo:

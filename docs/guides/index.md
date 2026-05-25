@@ -2,13 +2,31 @@
 
 Task-oriented walkthroughs. Each guide assumes you have already completed [Getting Started](../getting-started/index.md).
 
+<div class="kmp-callout" markdown>
+**New project? Start at the top.** The order below mirrors the typical adoption path: prepare your repo, wire CI, understand the flow, then go deep on the day-to-day tasks.
+</div>
+
 <div class="kmp-grid" markdown>
 
 <div class="card" markdown>
-### Analyzing a bump locally
-Run the analyzer against any KMP repository on your machine — static-only or with the dynamic phase.
+### Preparing an existing KMP project
+Nine-step checklist that turns an arbitrary KMP repository into one that meets every prerequisite — before you touch the install guide.
 
-[Open →](analyzing-locally.md)
+[Open →](preparing-a-kmp-project.md)
+</div>
+
+<div class="card" markdown>
+### Configuring GitHub Actions
+Drop the workflow into a target repo, vendor the analyzer, enable GitHub Pages, set permissions.
+
+[Open →](github-actions.md)
+</div>
+
+<div class="card" markdown>
+### Configuring Dependabot
+30-second primer plus the biasing rules that keep the AFTER APK compiling.
+
+[Open →](dependabot.md)
 </div>
 
 <div class="card" markdown>
@@ -19,17 +37,10 @@ End-to-end walkthrough of the Dependabot → workflow → analyzer → report fl
 </div>
 
 <div class="card" markdown>
-### Configuring GitHub Actions
-Drop the workflow into a target repo, enable GitHub Pages, configure permissions.
+### Analyzing a bump locally
+Run the analyzer against any KMP repository on your machine — static-only or with the dynamic phase.
 
-[Open →](github-actions.md)
-</div>
-
-<div class="card" markdown>
-### Configuring Dependabot
-30-second primer plus the biasing rules that keep the AFTER APK compiling.
-
-[Open →](dependabot.md)
+[Open →](analyzing-locally.md)
 </div>
 
 <div class="card" markdown>
