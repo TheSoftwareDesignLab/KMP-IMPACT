@@ -91,7 +91,7 @@ Phase 5 — Visualization
   │  CodeCharta JSON; HTML report; PR-comment payload.
 ```
 
-Each phase reads and writes a typed JSON contract under `output/phaseN/`. Contracts are documented in [`docs/architecture/phases.md`](docs/architecture/phases.md).
+Each phase reads and writes a typed JSON contract under `output/phaseN/`. Contracts are documented in [`docs/reference/contracts/`](docs/reference/contracts/).
 
 ## CLI
 
@@ -102,13 +102,13 @@ kmp-impact detect-version-changes --before A.toml --after B.toml
 kmp-impact evaluate --results phase4/consolidated.json --ground-truth ground_truth.yml
 ```
 
-Full reference: [`docs/usage/cli.md`](docs/usage/cli.md).
+Full reference: [`docs/reference/cli/`](docs/reference/cli/).
 
 ## GitHub Action
 
 Drop [`examples/github-action/impact-analysis.yml`](examples/github-action/impact-analysis.yml) and [`examples/github-action/dependabot.yml`](examples/github-action/dependabot.yml) into the target repository under `.github/`, enable GitHub Pages with `Source: GitHub Actions`, and the workflow will run on every PR that touches the version catalog.
 
-Walkthrough: [`docs/usage/github-action.md`](docs/usage/github-action.md).
+Walkthrough: [`docs/guides/github-actions.md`](docs/guides/github-actions.md).
 
 ## Output artifacts
 
@@ -121,21 +121,6 @@ output/
 ├── phase5/{impact.cc.json, before.cc.json, after.cc.json}
 └── report/{index.html, summary.json, summary.md}
 ```
-
-## Evaluation summary
-
-53 real Dependabot PRs across 5 public KMP projects, against a manually audited ground truth (121/121 dependencies cross-checked, 89/89 direct files verified file-by-file).
-
-| Repo | PRs | Pipeline OK | F1 (static) |
-|---|---:|---:|---:|
-| Pokedex | 10 | 8 | 0.699 |
-| Confetti | 11 | 8 | 0.737 |
-| DroidconKotlin | 11 | 9 | 0.828 |
-| KMP-App-Template | 10 | 9 | 0.307 |
-| kmp-production-sample | 11 | 10 | 0.780 |
-| **Total** | **53** | **44 (95.7 % adjusted)** | **F1 = 0.658 · Recall = 0.720** |
-
-Full methodology and per-PR results: [`docs/evaluation/`](docs/evaluation/).
 
 ## Development
 

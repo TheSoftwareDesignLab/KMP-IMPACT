@@ -36,7 +36,7 @@ gradle-init/               # Gradle init script used by the static phase
 tools/                     # auxiliary scripts (ksp dump, etc.)
 ```
 
-A deeper map lives in [`docs/architecture/overview.md`](docs/architecture/overview.md).
+A deeper map lives in [`docs/architecture/pipeline-overview.md`](docs/architecture/pipeline-overview.md).
 
 ## Coding rules
 

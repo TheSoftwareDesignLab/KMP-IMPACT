@@ -72,6 +72,6 @@ If either APK fails to build, the report will mark the dynamic phase `BLOCKED` w
 
 ## 5. Where to go next
 
-- Plug it into a real PR flow with the [GitHub Action](../usage/github-action.md).
-- Read the [Pipeline overview](../architecture/overview.md) to understand what each phase contributes.
+- Plug it into a real PR flow with the [GitHub Action guide](../guides/github-actions.md).
+- Read the [Pipeline overview](../architecture/pipeline-overview.md) to understand what each phase contributes.
 - Browse the [Presets](../presets/index.md) for ready-to-fork examples per KMP project.

@@ -1,76 +1,97 @@
-/* KMP-IMPACT docs — small tweaks on top of Material */
+/* KMP-IMPACT docs — minimal overrides on top of Material.
+   Sets the brand palette and lightly polishes typography and tables.
+   Visual layout is intentionally close to Material's defaults. */
 
 :root {
-  --md-primary-fg-color: #6c3fc8;
-  --md-primary-fg-color--light: #8763d8;
-  --md-primary-fg-color--dark: #4a2391;
-  --md-accent-fg-color: #4f46e5;
+  --kmp-primary:        #3d35b1;
+  --kmp-primary-light:  #5e54d4;
+  --kmp-primary-dark:   #2a2280;
+  --kmp-accent:         #4f46e5;
 }
 
-.md-typeset h1 {
-  font-weight: 700;
-  letter-spacing: -0.01em;
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:           var(--kmp-primary);
+  --md-primary-fg-color--light:    var(--kmp-primary-light);
+  --md-primary-fg-color--dark:     var(--kmp-primary-dark);
+  --md-accent-fg-color:            var(--kmp-accent);
+  --md-typeset-a-color:            var(--kmp-primary);
 }
 
-.md-typeset h2 {
-  margin-top: 2.2em;
-  border-bottom: 1px solid var(--md-default-fg-color--lightest);
-  padding-bottom: 0.3em;
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:           var(--kmp-primary-light);
+  --md-primary-fg-color--light:    #8077e8;
+  --md-primary-fg-color--dark:     var(--kmp-primary);
+  --md-accent-fg-color:            #818cf8;
+  --md-typeset-a-color:            #a5b4fc;
 }
 
-.md-typeset .md-button {
-  border-radius: 6px;
-}
+/* Headings: tighter tracking, clearer hierarchy */
+.md-typeset h1 { font-weight: 700; letter-spacing: -0.015em; }
+.md-typeset h2 { font-weight: 700; letter-spacing: -0.01em; margin-top: 2.2em; }
+.md-typeset h3 { font-weight: 600; }
 
+/* Inline code: subtler */
+.md-typeset code { font-size: 0.86em; }
+
+/* Tables: rounded, soft border */
 .md-typeset table:not([class]) {
   font-size: 0.78rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  overflow: hidden;
 }
-
 .md-typeset table:not([class]) th {
-  background: var(--md-primary-fg-color--dark);
-  color: #fff;
+  background: var(--md-default-fg-color--lightest);
+  font-weight: 600;
+  border: 0;
 }
 
-/* Pipeline ASCII boxes stay readable */
-.md-typeset pre code {
-  font-size: 0.78rem;
-  line-height: 1.45;
+/* Buttons */
+.md-typeset .md-button {
+  border-radius: 6px;
+  font-weight: 600;
+}
+.md-typeset .md-button--primary {
+  background: var(--kmp-primary);
+  border-color: var(--kmp-primary);
 }
 
-/* Hero on the home page */
-.kmp-hero {
-  text-align: center;
-  padding: 2.2rem 0 1.4rem;
-  border-bottom: 1px solid var(--md-default-fg-color--lightest);
-  margin-bottom: 1.6rem;
-}
-
-.kmp-hero h1 {
-  font-size: 2.4rem;
-  margin: 0;
-}
-
-.kmp-hero p.tagline {
-  color: var(--md-default-fg-color--light);
-  font-size: 1.05rem;
-  margin: 0.4rem 0 1rem;
-}
-
+/* Feature card grid used on landing and section index pages */
 .kmp-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.8rem;
+  margin: 1.2rem 0;
 }
-
 .kmp-grid > .card {
   border: 1px solid var(--md-default-fg-color--lightest);
   border-radius: 8px;
   padding: 1rem 1.1rem;
   background: var(--md-default-bg-color);
+  transition: border-color 0.15s ease;
+}
+.kmp-grid > .card:hover {
+  border-color: var(--kmp-primary);
+}
+.kmp-grid > .card h3 {
+  margin: 0 0 0.4rem !important;
+  font-size: 0.92rem !important;
+}
+.kmp-grid > .card p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--md-default-fg-color--light);
 }
 
-.kmp-grid > .card h3 {
-  margin-top: 0;
-  font-size: 1rem;
+/* "On this page, you'll learn" callout used at the top of section indexes */
+.md-typeset .kmp-callout {
+  padding: 0.8rem 1rem;
+  border-left: 3px solid var(--kmp-primary);
+  background: rgba(61, 53, 177, 0.05);
+  border-radius: 0 6px 6px 0;
+  margin: 1rem 0 1.4rem;
+  font-size: 0.82rem;
+}
+[data-md-color-scheme="slate"] .md-typeset .kmp-callout {
+  background: rgba(94, 84, 212, 0.12);
 }

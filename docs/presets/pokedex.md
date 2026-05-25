@@ -79,15 +79,6 @@ updates:
 
 Major bumps of Kotlin, Compose BOM, AGP and Ktor are blocked because they routinely introduce ABI breaks that prevent the AFTER APK from building. Patch and minor bumps still flow.
 
-## Evaluation result
+## Known mapping gap
 
-| Metric | Value |
-|---|---|
-| PRs opened by Dependabot | 10 |
-| Pipeline `OK` | 8 |
-| Pipeline `BLOCKED_BUILD` | 1 (`gradle-wrapper 8.x → 9.5.1`) |
-| Pipeline `EXPECTED_SKIPPED` | 1 (`pip/requests`) |
-| Static-analysis F1 | 0.699 |
-| DroidBot UTGs generated | 8/8 |
-
-Notable finding: the analyzer does not currently map `io.github.qdsfdhvh` to `com.seiko.imageloader`, missing one direct file in the `image-loader` bump. Adding the mapping moves Pokedex's F1 up.
+The analyzer does not currently map `io.github.qdsfdhvh` to `com.seiko.imageloader`, so direct files for the `image-loader` bump are missed in the static phase. The fix is a one-line addition to the Maven → Kotlin map; the dynamic phase is unaffected.

@@ -48,7 +48,7 @@ The workflow has five jobs that mirror the pipeline phases:
 4. **`merge`** — combines the static and dynamic artifacts and produces the final consolidated JSON.
 5. **`deploy-pages`** — bundles the HTML report and publishes it via `actions/deploy-pages@v4`. Comments on the PR with the URL.
 
-If any step legitimately blocks (no APK produced, no UTG generated, version catalog not touched), the workflow surfaces the reason rather than masking it as `skipped`. See the pipeline contracts in [`docs/architecture/phases.md`](../../docs/architecture/phases.md).
+If any step legitimately blocks (no APK produced, no UTG generated, version catalog not touched), the workflow surfaces the reason rather than masking it as `skipped`. See the pipeline reference in [`docs/architecture/`](../../docs/architecture/) and the data contracts in [`docs/reference/contracts/`](../../docs/reference/contracts/).
 
 ## Customization
 

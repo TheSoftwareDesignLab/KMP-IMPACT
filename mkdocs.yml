@@ -12,32 +12,36 @@ theme:
   language: en
   features:
     - navigation.instant
+    - navigation.instant.progress
     - navigation.tracking
-    - navigation.tabs
     - navigation.sections
     - navigation.expand
     - navigation.indexes
+    - navigation.path
+    - navigation.prune
     - navigation.top
     - navigation.footer
     - toc.follow
     - search.suggest
     - search.highlight
+    - search.share
     - content.code.copy
     - content.code.annotate
+    - content.code.select
     - content.tabs.link
     - content.action.edit
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: deep purple
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-sunny
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: deep purple
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-night
         name: Switch to light mode
@@ -46,26 +50,50 @@ theme:
     code: JetBrains Mono
   icon:
     repo: fontawesome/brands/github
-    edit: material/pencil
-    view: material/eye
+    edit: material/pencil-outline
+    view: material/eye-outline
 
 nav:
-  - Home: index.md
-  - Getting started:
+  - Introduction: index.md
+  - Getting Started:
       - getting-started/index.md
-      - Requirements: getting-started/requirements.md
       - Installation: getting-started/installation.md
+      - Requirements: getting-started/requirements.md
+      - Project Structure: getting-started/project-structure.md
       - Quickstart: getting-started/quickstart.md
-  - Usage:
-      - usage/index.md
-      - CLI reference: usage/cli.md
-      - Scenarios: usage/scenarios.md
-      - GitHub Action: usage/github-action.md
+  - Guides:
+      - guides/index.md
+      - Analyzing a bump locally: guides/analyzing-locally.md
+      - Configuring GitHub Actions: guides/github-actions.md
+      - Configuring Dependabot: guides/dependabot.md
+      - Writing Scenarios: guides/scenarios.md
+      - Reading the Report: guides/reading-the-report.md
+      - Diagnosing a BLOCKED phase: guides/diagnosing-blocked.md
   - Architecture:
       - architecture/index.md
-      - Pipeline overview: architecture/overview.md
-      - Phase contracts: architecture/phases.md
-      - Data contracts: architecture/contracts.md
+      - Pipeline overview: architecture/pipeline-overview.md
+      - Phase 1 — Shadow build: architecture/phase-1-shadow-build.md
+      - Phase 2 — Static analysis: architecture/phase-2-static-analysis.md
+      - Phase 3 — Dynamic analysis: architecture/phase-3-dynamic-analysis.md
+      - Phase 4 — Consolidation: architecture/phase-4-consolidation.md
+      - Phase 5 — Visualization: architecture/phase-5-visualization.md
+  - API Reference:
+      - reference/index.md
+      - CLI:
+          - reference/cli/index.md
+          - "kmp-impact analyze": reference/cli/analyze.md
+          - "kmp-impact run-scenario": reference/cli/run-scenario.md
+          - "kmp-impact detect-version-changes": reference/cli/detect-version-changes.md
+          - "kmp-impact evaluate": reference/cli/evaluate.md
+      - Data Contracts:
+          - reference/contracts/index.md
+          - AnalysisConfig: reference/contracts/analysis-config.md
+          - FileImpact: reference/contracts/file-impact.md
+          - ExpectActualHit: reference/contracts/expect-actual-hit.md
+          - ImpactGraph: reference/contracts/impact-graph.md
+          - UIDiffResult: reference/contracts/ui-diff-result.md
+          - ConsolidatedReport: reference/contracts/consolidated-report.md
+      - GitHub Action: reference/github-action.md
   - Presets:
       - presets/index.md
       - Pokedex: presets/pokedex.md
@@ -73,14 +101,11 @@ nav:
       - DroidconKotlin: presets/droidcon-kotlin.md
       - KMP-App-Template: presets/kmp-app-template.md
       - kmp-production-sample: presets/kmp-production-sample.md
-  - Evaluation:
-      - evaluation/index.md
-      - Methodology: evaluation/methodology.md
-      - Results: evaluation/results.md
   - Troubleshooting: troubleshooting.md
   - Changelog: changelog.md
 
 markdown_extensions:
+  - abbr
   - admonition
   - attr_list
   - def_list
@@ -90,6 +115,8 @@ markdown_extensions:
   - toc:
       permalink: true
       toc_depth: 3
+  - pymdownx.betterem
+  - pymdownx.caret
   - pymdownx.details
   - pymdownx.highlight:
       anchor_linenums: true
@@ -98,6 +125,7 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.mark
+  - pymdownx.smartsymbols
   - pymdownx.snippets:
       base_path: ["."]
       check_paths: true
@@ -110,6 +138,7 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.tilde
 
 plugins:
   - search

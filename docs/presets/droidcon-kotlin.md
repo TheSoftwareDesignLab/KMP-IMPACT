@@ -25,15 +25,6 @@ gh api -X PUT repos/<owner>/<repo>/actions/workflows/<wrapper-yml-id>/disable
 
 After disabling, only `impact-analysis.yml` runs on PRs.
 
-## Evaluation result
+## Why this preset is a good fit
 
-| Metric | Value |
-|---|---|
-| Kotlin files scanned | 164 |
-| Pipeline `OK` | 9 |
-| Pipeline `BLOCKED_BUILD` | 1 (`gradle-wrapper 8 → 9.5.1`) |
-| Pipeline `EXPECTED_SKIPPED` | 1 (`pip/requests`) |
-| Static-analysis F1 | **0.828** (best of the evaluation) |
-| DroidBot UTGs generated | 9/9 |
-
-Why the F1 is high: DroidconKotlin's dependencies map cleanly into the analyzer's Maven → Kotlin table. `io.ktor:*` resolves to `io.ktor.*`, `io.insert-koin:*` to `org.koin.*`, and the project follows the conventional KMP source-set layout exactly. Manual audit confirmed `ktor` 6/6 direct files, `koin` 12/12 direct files with no discrepancies.
+DroidconKotlin's dependencies map cleanly into the analyzer's Maven → Kotlin table — `io.ktor:*` resolves to `io.ktor.*`, `io.insert-koin:*` to `org.koin.*` — and the project follows the conventional KMP source-set layout exactly. If your repo looks like DroidconKotlin, the integration is essentially copy-paste.

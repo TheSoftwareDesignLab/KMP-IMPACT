@@ -24,11 +24,6 @@ First public release of **KMP-IMPACT**: the thesis-grade dependency impact analy
 - Propagation tree visualization with per-level expand/collapse and persisted `propagated_from` parent links.
 - Pydantic v2 contracts for every inter-phase JSON artifact.
 - Reference integration for KMP demo projects: Pokedex, Confetti, DroidconKotlin, KMP-App-Template, kmp-production-sample.
-- Empirical evaluation across **53 real Dependabot PRs** against a manually audited ground truth (121/121 dependencies and 89/89 direct files cross-verified):
-  - Pipeline adjusted success rate **95.7 %**
-  - Static-analysis **F1 = 0.658**, Recall = 0.720
-  - DroidBot dynamic phase executed in **44/44** eligible PRs
-  - 5/5 visual criteria satisfied across all generated reports
 
 ### Known limitations
 - L2 — `plugin_or_toolchain` bumps report 0 static impact (by design).

@@ -52,15 +52,6 @@ Same conservative biasing as [Pokedex](pokedex.md), plus an explicit ignore for 
   update-types: ["version-update:semver-major", "version-update:semver-minor"]
 ```
 
-## Evaluation result
+## Scale notes
 
-| Metric | Value |
-|---|---|
-| Kotlin files scanned | 299 |
-| Direct files for `io.insert-koin` in the ground truth | 62 (cross-grep verified, 0 discrepancies) |
-| Pipeline `OK` | 8 |
-| Pipeline `BLOCKED_PAGES` | 2 (Pages concurrency, [L6](../troubleshooting.md#l6-deploy-pages-cancellation)) |
-| Static-analysis F1 | 0.737 |
-| DroidBot UTGs generated | 8/8 |
-
-Confetti is a stress test for the pipeline: 299 Kotlin files, 62 direct seeds for a single dependency, and 11 Dependabot PRs. The static phase scales linearly with file count; on this repo it completes in under 90 seconds in CI.
+Confetti is the largest reference tree (299 Kotlin files). The static phase scales linearly with file count and completes in under 90 seconds in CI. Pages deploys can hit the concurrency cap [L6](../troubleshooting.md#l6-deploy-pages-cancellation) when several PRs land at once — the workflow already sets the recommended concurrency group.

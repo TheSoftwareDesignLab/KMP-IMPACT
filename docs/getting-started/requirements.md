@@ -40,7 +40,7 @@ A full reference of these prerequisites lives in the project repository at [`CON
 | AVD | x86_64, API 33+ | The CI workflow boots `system-images;android-33;default;x86_64`. |
 | adb | Recent | The runner uses adb shell instrumentation. |
 
-In CI (GitHub Actions) the [reference workflow](../usage/github-action.md) handles all of this for you. Locally, you only need the dynamic phase if you are debugging UI regressions interactively — most analyses run fine with `--skip-dynamic`.
+In CI (GitHub Actions) the [reference workflow](../guides/github-actions.md) handles all of this for you. Locally, you only need the dynamic phase if you are debugging UI regressions interactively — most analyses run fine with `--skip-dynamic`.
 
 ## What if my project doesn't meet the prerequisites?
 

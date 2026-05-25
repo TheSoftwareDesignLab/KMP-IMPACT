@@ -33,14 +33,6 @@ This preset is the only one in the evaluation that does **not** use Compose. Use
       update-types: ["version-update:semver-major"]
 ```
 
-## Evaluation result
+## Why this preset is a good fit
 
-| Metric | Value |
-|---|---|
-| Kotlin files scanned | 32 |
-| Pipeline `OK` | 10 |
-| Pipeline `BLOCKED_BUILD` | 1 (`gradle-wrapper 8 → 9.5.1`) |
-| Static-analysis F1 | 0.780 (Recall = **1.00**) |
-| DroidBot UTGs generated | 10/10 |
-
-Recall is perfect here: the analyzer does not miss any file that the ground truth marks as impacted. Precision is moderate because some bumps touch project-wide configuration (AGP, `com.github.ben-manes.versions`) and the static phase reports more files than the ground truth — a conservative-by-design behaviour rather than a defect.
+Useful as a control case for projects that do **not** use Compose. ABI breaks tied to Compose Compiler or BOM bumps do not apply, so the workflow gets fewer `BLOCKED_BUILD` outcomes. Recall on Ktor and Kotlinx dependencies tends to be excellent: the BFS over imports captures every file that touches the bumped library.
