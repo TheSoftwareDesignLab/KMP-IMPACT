@@ -12,6 +12,13 @@ Run the analyzer against any KMP repository on your machine — static-only or w
 </div>
 
 <div class="card" markdown>
+### How everything talks to each other
+End-to-end walkthrough of the Dependabot → workflow → analyzer → report flow, with a sequence diagram.
+
+[Open →](how-it-works.md)
+</div>
+
+<div class="card" markdown>
 ### Configuring GitHub Actions
 Drop the workflow into a target repo, enable GitHub Pages, configure permissions.
 
@@ -20,7 +27,7 @@ Drop the workflow into a target repo, enable GitHub Pages, configure permissions
 
 <div class="card" markdown>
 ### Configuring Dependabot
-Bias Dependabot toward minor/patch bumps so the AFTER APK keeps compiling.
+30-second primer plus the biasing rules that keep the AFTER APK compiling.
 
 [Open →](dependabot.md)
 </div>

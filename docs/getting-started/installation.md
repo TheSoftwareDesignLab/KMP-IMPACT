@@ -10,6 +10,8 @@ source .venv/bin/activate     # Windows: .venv\Scripts\activate
 pip install -e ".[dev]"
 ```
 
+For a line-by-line account of what each command downloads or creates, see [What gets installed](what-gets-installed.md).
+
 The package exposes a single console entry point:
 
 ```bash
@@ -43,3 +45,10 @@ kmp-impact detect-version-changes --help
 ```
 
 If those commands respond, the installation is complete — head to the [Quickstart](quickstart.md).
+
+## Next steps
+
+- [Quickstart](quickstart.md) — run a first analysis on a sample KMP project.
+- [Requirements](requirements.md) — make sure your target KMP project meets the prerequisites.
+- [What gets installed](what-gets-installed.md) — understand the disk, network, and dependency footprint.
+- [Guides → How everything talks to each other](../guides/how-it-works.md) — see the runtime flow before wiring the workflow into a real repo.

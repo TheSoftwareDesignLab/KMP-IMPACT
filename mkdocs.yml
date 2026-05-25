@@ -59,11 +59,13 @@ nav:
       - getting-started/index.md
       - Installation: getting-started/installation.md
       - Requirements: getting-started/requirements.md
+      - What gets installed: getting-started/what-gets-installed.md
       - Project Structure: getting-started/project-structure.md
       - Quickstart: getting-started/quickstart.md
   - Guides:
       - guides/index.md
       - Analyzing a bump locally: guides/analyzing-locally.md
+      - How everything talks to each other: guides/how-it-works.md
       - Configuring GitHub Actions: guides/github-actions.md
       - Configuring Dependabot: guides/dependabot.md
       - Writing Scenarios: guides/scenarios.md
