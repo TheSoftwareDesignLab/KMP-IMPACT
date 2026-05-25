@@ -28,36 +28,41 @@ phase3/
 
 ```json
 {
-  "status": "OK",
-  "before_screens": 14,
-  "after_screens": 14,
-  "new_screens": [],
-  "missing_screens": [],
-  "new_edges": [],
-  "missing_edges": []
+  "status": "completed",
+  "blocked_reason": "",
+  "before_screens": ["MainActivity", "DetailActivity"],
+  "after_screens":  ["MainActivity", "DetailActivity"],
+  "diffs": [],
+  "activity_coverage_before": { "MainActivity": 18, "DetailActivity": 6 },
+  "activity_coverage_after":  { "MainActivity": 17, "DetailActivity": 7 },
+  "nodes_before": 14, "nodes_after": 14,
+  "structures_before": 6, "structures_after": 6
 }
 ```
 
-Or, on failure:
+On failure the same model carries a `blocked` status and an empty payload:
 
 ```json
 {
-  "status": "BLOCKED",
-  "blocked_reason": "DroidBot produced no UTG artifact"
+  "status": "blocked",
+  "blocked_reason": "DroidBot produced no UTG artifact",
+  "before_screens": [],
+  "after_screens": [],
+  "diffs": []
 }
 ```
 
 ## Edge cases
 
 - **Build failure on BEFORE or AFTER.** Most common cause is Kotlin 2.x without the Compose Compiler plugin. See [L4](../troubleshooting.md#l4-droidbot-blocked-no-apk).
-- **Android module not detected.** Override with `KMP_IMPACT_ANDROID_MODULE=":your-module"`.
+- **Android module not detected.** The workflow probes the module names listed in [Reference → GitHub Action](../reference/github-action.md#android-module-autodetection). If none match, expose your real module under one of those aliases.
 - **Empty UTG.** The merge step rejects empty UTG folders on purpose — an empty artifact would mask a real failure.
 - **Emulator unavailable.** Locally, fall back to `--skip-dynamic`. In CI, the emulator is provided by `reactivecircus/android-emulator-runner`.
 
 ## Contracts
 
-- [`UIDiffResult`](../reference/contracts/ui-diff-result.md)
-- [`DynamicStatus`](../reference/contracts/ui-diff-result.md#dynamicstatus)
+- [`UIRegressions`](../reference/contracts/ui-regressions.md)
+- [`DynamicStatus`](../reference/contracts/ui-regressions.md#dynamicstatus)
 
 ## Next phase
 

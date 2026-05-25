@@ -15,7 +15,6 @@ theme:
     - navigation.instant.progress
     - navigation.tracking
     - navigation.sections
-    - navigation.expand
     - navigation.indexes
     - navigation.path
     - navigation.prune
@@ -30,6 +29,7 @@ theme:
     - content.code.select
     - content.tabs.link
     - content.action.edit
+    - content.action.view
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -89,10 +89,10 @@ nav:
           - reference/contracts/index.md
           - AnalysisConfig: reference/contracts/analysis-config.md
           - FileImpact: reference/contracts/file-impact.md
-          - ExpectActualHit: reference/contracts/expect-actual-hit.md
+          - ExpectActualPair: reference/contracts/expect-actual-pair.md
           - ImpactGraph: reference/contracts/impact-graph.md
-          - UIDiffResult: reference/contracts/ui-diff-result.md
-          - ConsolidatedReport: reference/contracts/consolidated-report.md
+          - UIRegressions: reference/contracts/ui-regressions.md
+          - ConsolidatedResult: reference/contracts/consolidated-result.md
       - GitHub Action: reference/github-action.md
   - Presets:
       - presets/index.md

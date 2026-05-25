@@ -1,34 +1,52 @@
 # `kmp-impact run-scenario`
 
-Run a YAML-defined scenario. Scenarios bundle one or more bumps with an optional ground truth and are the recommended way to benchmark changes to the analyzer.
+Run an analysis from a predefined scenario file. The scenario captures a single dependency bump together with its repository pointer; the runner reads `scenario.yml` and forwards the values to the same pipeline that powers [`analyze`](analyze.md).
 
 ## Synopsis
 
 ```bash
 kmp-impact run-scenario \
   --scenario-dir DIR \
-  --output-dir OUT \
+  [--output-dir OUT] \
   [--skip-dynamic]
 ```
 
 ## Flags
 
-| Flag | Required | Description |
-|---|---|---|
-| `--scenario-dir` | yes | Path to a scenario directory containing `scenario.yml`. |
-| `--output-dir` | yes | Destination for `phaseN/` and the HTML report. |
-| `--skip-dynamic` | no | Skip Phase 3 for every bump in the scenario. |
+| Flag | Required | Default | Description |
+|---|---|---|---|
+| `--scenario-dir` | yes | — | Path to a directory that contains a `scenario.yml` file. |
+| `--output-dir` | no | `output` | Destination for `phaseN/` and the HTML report. |
+| `--skip-dynamic` | no | off | Skip Phase 3 (DroidBot). |
 
-## Scenario directory layout
+## `scenario.yml` schema
 
-```text
-scenario/
-├── scenario.yml         # bumps and metadata
-├── ground_truth.yml     # expected file/screen impact (optional)
-└── README.md            # human description
+```yaml
+# Required
+dependency_group: io.ktor
+before_version: "2.3.8"
+after_version: "2.3.11"
+
+# Required — exactly one of:
+repo_path: ./repo          # local path
+# repo_url: https://github.com/<owner>/<repo>.git
 ```
 
-See [Guides → Writing Scenarios](../../guides/scenarios.md) for the file format and authoring workflow.
+The runner ignores unknown keys. Sibling files in the same directory (`ground_truth.yml`, `README.md`) are not read by the CLI — the [`evaluate`](evaluate.md) command consumes `ground_truth.yml` separately.
+
+## Authoring a scenario
+
+```bash
+mkdir -p scenarios/pokedex_ktor_minor
+cat > scenarios/pokedex_ktor_minor/scenario.yml <<'YAML'
+dependency_group: io.ktor
+before_version: "2.3.8"
+after_version: "2.3.11"
+repo_path: ../../pokedex-kmp
+YAML
+```
+
+For the authoring workflow and `ground_truth.yml` companion file, see [Guides → Writing Scenarios](../../guides/scenarios.md).
 
 ## Example
 
@@ -39,9 +57,7 @@ kmp-impact run-scenario \
   --skip-dynamic
 ```
 
-When `ground_truth.yml` is present, the report includes a metrics card with Precision / Recall / F1 for both files and screens.
-
 ## See also
 
-- [`analyze`](analyze.md) — for a single ad-hoc bump.
-- [`evaluate`](evaluate.md) — for offline metric computation against an existing result.
+- [`analyze`](analyze.md) — equivalent ad-hoc invocation with explicit flags.
+- [`evaluate`](evaluate.md) — score a result against `ground_truth.yml` offline.

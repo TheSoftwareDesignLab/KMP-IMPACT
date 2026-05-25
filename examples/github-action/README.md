@@ -52,12 +52,7 @@ If any step legitimately blocks (no APK produced, no UTG generated, version cata
 
 ## Customization
 
-- **Android module name.** The workflow tries `:android`, `:app`, `:composeApp`, `:androidApp`, `:android-app`, `:shared:android`, and `:app:android` in order. If your module has a different name, set:
-
-  ```yaml
-  env:
-    KMP_IMPACT_ANDROID_MODULE: ":your-android-module"
-  ```
+- **Android module name.** The workflow probes the following module names in order: `shared, composeApp, androidApp, app, common, kmm-shared, kmpShared`. If none match, it falls back to `:app`. Expose your real module under one of these aliases, or edit the `Detect Android app module` step in the workflow itself.
 
 - **JDK / Gradle / Kotlin versions.** The workflow defaults to JDK 21 and uses the project's Gradle wrapper. If the wrapper is older than the AGP requires (8.7 for AGP 8.x, 9.0 for AGP 9.x), the workflow upgrades it in-place for the duration of the run.
 

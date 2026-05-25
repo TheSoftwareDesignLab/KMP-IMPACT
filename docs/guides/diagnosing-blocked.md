@@ -22,7 +22,7 @@ A `BLOCKED` phase is **not** an error. It means the analyzer correctly detected 
 
 This is the most common case. Check in order:
 
-1. **`Detect Android app module`** — must list `:android`, `:app`, `:composeApp`, or similar. If it prints `none found`, set `KMP_IMPACT_ANDROID_MODULE=":your-module"` in the workflow env.
+1. **`Detect Android app module`** — must resolve a real module. The workflow probes `shared, composeApp, androidApp, app, common, kmm-shared, kmpShared` in that order, then falls back to `:app`. If none of these match your real module name, expose it under one of those aliases.
 2. **`Ensure Gradle wrapper is recent enough for AGP`** — must show ≥ 8.7 for AGP 8.x and ≥ 9.0 for AGP 9.x.
 3. **`Build BEFORE APK`** — must end with `BEFORE APK: /tmp/before.apk`.
 4. **`Build AFTER APK`** — same expectation.
@@ -60,4 +60,4 @@ For multi-PR bursts, re-run cancelled deploys serially — wait for each `gh run
 ## See also
 
 - [Troubleshooting](../troubleshooting.md) — the canonical list of every documented limitation.
-- [Reference → `UIDiffResult`](../reference/contracts/ui-diff-result.md) — the `BLOCKED` status enum.
+- [Reference → `UIRegressions`](../reference/contracts/ui-regressions.md) — the `blocked` status enum.

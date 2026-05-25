@@ -39,13 +39,16 @@ Each row is a `FileImpact` record from the JSON contract:
 
 | Column | Source |
 |---|---|
-| Path | `file.path` |
-| Source set | `file.source_set` (`commonMain`, `androidMain`, …) |
-| Level | `file.impact_level` (2 = direct, 1 = transitive) |
-| Matched imports | `file.imports_matched` |
+| Path | `file.file_path` |
+| Source set | `file.source_set` (`common`, `android`, `ios`, …) |
+| Level | `file.relation` (`direct` / `transitive` / `expect_actual`) |
+| Distance | `file.distance` (BFS hops from the nearest direct seed) |
+| Matched imports | `file.imports_from_dependency` |
 | Reached from | `file.propagated_from[-1]` if transitive |
-| `expect`/`actual` | Number of detected pairs |
+| Declarations | `file.declarations` |
 | `rloc` / `mcc` | `file.metrics` |
+
+Detected `expect`/`actual` pairs are listed in a separate panel sourced from `impact_graph.expect_actual_pairs`, not on the file row.
 
 Clicking a node in the propagation tree highlights its parents up to a direct seed.
 
@@ -82,4 +85,4 @@ A flat list of every JSON file in `output/`. Useful when comparing two runs side
 ## See also
 
 - [Architecture → Phase 5 — Visualization](../architecture/phase-5-visualization.md) — how the report is generated.
-- [Reference → `ConsolidatedReport`](../reference/contracts/consolidated-report.md) — the JSON behind the Summary tab.
+- [Reference → `ConsolidatedResult`](../reference/contracts/consolidated-result.md) — the JSON behind the Summary tab.

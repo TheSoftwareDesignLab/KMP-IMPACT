@@ -17,6 +17,6 @@ Use a preset as a *checklist*: if your project matches one of these stacks, the 
 1. Pick the preset whose Android module name and source-set layout most closely matches yours.
 2. Copy `examples/github-action/impact-analysis.yml` to `.github/workflows/impact-analysis.yml` in the target repo.
 3. Copy the preset's `dependabot.yml` to `.github/dependabot.yml`, then adjust the `ignore` rules to your project's policy.
-4. If your Android module is not detected automatically (see [Architecture](../architecture/pipeline-overview.md)), set the env var `KMP_IMPACT_ANDROID_MODULE=":your-module"` in the workflow.
+4. If your Android module is not detected automatically, add a Gradle alias that matches one of the names the workflow probes — see [Reference → GitHub Action](../reference/github-action.md#android-module-autodetection).
 5. Enable GitHub Pages with **Source: GitHub Actions**.
 6. Disable any upstream workflow that requires secrets you do not have (see the Confetti and DroidconKotlin presets for the disable command).

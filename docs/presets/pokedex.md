@@ -49,12 +49,7 @@ kotlin {
 
 The pipeline detects the Android module by trying known names in order: `:android`, `:app`, `:composeApp`, `:androidApp`, `:android-app`, `:shared:android`, `:app:android`. Pokedex matches `:android`.
 
-If your module is named differently, set:
-
-```yaml title=".github/workflows/impact-analysis.yml"
-env:
-  KMP_IMPACT_ANDROID_MODULE: ":your-android-module"
-```
+If your module is named differently, add a Gradle alias that matches one of the names the workflow probes (`shared`, `composeApp`, `androidApp`, `app`, `common`, `kmm-shared`, `kmpShared`), or edit the `Detect Android app module` step in the reference workflow. See [Reference → GitHub Action](../reference/github-action.md#android-module-autodetection).
 
 ## Dependabot biasing
 

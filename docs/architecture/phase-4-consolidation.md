@@ -23,29 +23,32 @@ phase4/
 4. Compute the **risk label** with `phase4_consolidate/scorer.py`. The label maps `(direct_count, transitive_count, ui_diff_count, bump.category)` to `LOW`, `MEDIUM`, or `HIGH`. It is a review-prioritization cue, not a validated failure predictor.
 5. Compose a one-sentence **recommendation** that matches the risk label.
 
-## Output sample
+## Output sample (abridged)
 
 ```json
 {
-  "bump": {
-    "dependency": "io.ktor",
-    "before": "2.3.8",
-    "after": "2.3.11",
-    "category": "library_kotlin"
-  },
-  "static": {
-    "impact_graph": { /* … */ }
-  },
-  "dynamic": {
-    "ui_diff": { /* … */ }
-  },
-  "traceability": [
-    { "file": "shared/.../PokedexClient.kt", "screens": ["PokemonDetailScreen"] }
+  "dependency_group": "io.ktor",
+  "version_before": "2.3.8",
+  "version_after": "2.3.11",
+  "static_impact":       { /* ImpactGraph */ },
+  "dynamic_regressions": { /* UIRegressions */ },
+  "screen_mappings": [
+    {
+      "screen_name": "PokemonDetailScreen",
+      "mapped_files": ["shared/src/commonMain/kotlin/.../PokedexClient.kt"],
+      "confidence": 0.78,
+      "method": "package_match"
+    }
   ],
-  "risk": "LOW",
-  "recommendation": "Safe to merge after CI."
+  "trace": [ /* TraceEntry[] */ ],
+  "impacted_screens": ["PokemonDetailScreen"],
+  "total_impacted_files": 7,
+  "total_impacted_screens": 1,
+  "stack_compatibility": { "warnings": [], "detected": { "kotlin": "2.0.21" } }
 }
 ```
+
+The risk label and the one-sentence recommendation are computed by the HTML renderer from these counters and the bump category — they are not persisted in the JSON.
 
 ## Edge cases
 
@@ -59,7 +62,7 @@ phase4/
 
 ## Contract
 
-- [`ConsolidatedReport`](../reference/contracts/consolidated-report.md)
+- [`ConsolidatedResult`](../reference/contracts/consolidated-result.md)
 
 ## Next phase
 

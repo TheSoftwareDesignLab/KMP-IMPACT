@@ -1,32 +1,38 @@
 # `kmp-impact evaluate`
 
-Compare a pipeline result against a ground truth and emit Precision / Recall / F1. Used to score scenarios and to validate analyzer changes against a known-good baseline.
+Compare a pipeline result against a ground truth and emit Precision / Recall / F1 for both files and screens.
 
 ## Synopsis
 
 ```bash
 kmp-impact evaluate \
-  --results output/phase4/consolidated.json \
-  --ground-truth scenarios/cursokmpapp_ktor/ground_truth.yml
+  --results CONSOLIDATED.json \
+  --ground-truth GROUND_TRUTH.yml \
+  [--output-dir OUT]
 ```
 
 ## Flags
 
-| Flag | Required | Description |
-|---|---|---|
-| `--results` | yes | Path to `phase4/consolidated.json` from a previous pipeline run. |
-| `--ground-truth` | yes | Path to a `ground_truth.yml` with `direct_files`, `transitive_files`, and `ui_screens`. |
+| Flag | Required | Default | Description |
+|---|---|---|---|
+| `--results` | yes | — | Path to `phase4/consolidated.json` from a previous pipeline run. |
+| `--ground-truth` | yes | — | Path to a `ground_truth.yml` with the expected impacted files and screens. |
+| `--output-dir` | no | `output/evaluation` | Directory where the per-scenario evaluation artefacts are written. |
 
-## Output
+## Behaviour
 
-JSON on stdout. Same shape as the metrics card embedded in the HTML report:
+1. Loads the `ConsolidatedResult` model from `--results`.
+2. Reads the expected sets from `--ground-truth`.
+3. Computes per-file and per-screen Precision / Recall / F1.
+4. Writes a small report under `--output-dir` and logs the headline metrics.
 
-```json
-{
-  "files": { "precision": 0.83, "recall": 0.75, "f1": 0.79 },
-  "screens": { "precision": 1.00, "recall": 1.00, "f1": 1.00 }
-}
+A log line summarises the result:
+
+```text
+F1=0.79  Precision=0.83  Recall=0.75
 ```
+
+The on-disk artefact is an `EvaluationResult` JSON with the full true-positive, false-positive, and false-negative file/screen lists for inspection.
 
 ## Metric definitions
 
@@ -38,9 +44,16 @@ Recall    = |A ∩ M| / |M|
 F1        = 2 · P · R / (P + R)
 ```
 
-A bump where both `A` and `M` are empty is reported with `null` metrics — it does not contribute to mean values.
+## Example
+
+```bash
+kmp-impact evaluate \
+  --results output/phase4/consolidated.json \
+  --ground-truth scenarios/pokedex_ktor_minor/ground_truth.yml \
+  --output-dir output/evaluation
+```
 
 ## See also
 
 - [Guides → Writing Scenarios](../../guides/scenarios.md) — how to author `ground_truth.yml`.
-- [`run-scenario`](run-scenario.md) — the scenario runner that embeds these metrics automatically.
+- [`ConsolidatedResult`](../contracts/consolidated-result.md) — the input contract.

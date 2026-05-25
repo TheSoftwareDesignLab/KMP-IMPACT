@@ -28,21 +28,35 @@ phase2/
 
 ## Output sample
 
+A single `FileImpact` entry inside `phase2/impact_graph.json#impacted_files`:
+
 ```json
 {
-  "path": "shared/src/commonMain/kotlin/com/example/api/PokedexClient.kt",
-  "source_set": "commonMain",
-  "impact_level": 2,
-  "imports_matched": ["io.ktor.client.HttpClient"],
+  "file_path": "shared/src/commonMain/kotlin/com/example/api/PokedexClient.kt",
+  "relation": "direct",
+  "distance": 0,
+  "imports_from_dependency": ["io.ktor.client.HttpClient"],
   "propagated_from": [],
-  "expect_actual": [
-    { "kind": "class", "name": "HttpEngineFactory", "role": "expect" }
-  ],
-  "metrics": { "rloc": 84, "mcc": 12 }
+  "metrics": { "rloc": 84, "functions": 9, "mcc": 12 },
+  "declarations": ["PokedexClient"],
+  "source_set": "common"
 }
 ```
 
-Aggregate counters per source set are written under `impact_graph.json#counts.by_source_set` and rendered as the sunburst preview in the PR comment.
+Detected pairs travel separately under `impact_graph.json#expect_actual_pairs`:
+
+```json
+{
+  "expect_fqcn": "com.example.HttpEngineFactory",
+  "expect_file": "shared/src/commonMain/kotlin/com/example/HttpEngineFactory.kt",
+  "actual_files": [
+    "shared/src/androidMain/kotlin/com/example/HttpEngineFactory.android.kt",
+    "shared/src/iosMain/kotlin/com/example/HttpEngineFactory.ios.kt"
+  ]
+}
+```
+
+Per-source-set counts are not pre-computed in the model — the renderer groups `impacted_files` by `source_set` at report time. The PR-comment sunburst preview is built from the same grouping.
 
 ## Edge cases
 
@@ -54,7 +68,7 @@ Aggregate counters per source set are written under `impact_graph.json#counts.by
 ## Contracts
 
 - [`FileImpact`](../reference/contracts/file-impact.md)
-- [`ExpectActualHit`](../reference/contracts/expect-actual-hit.md)
+- [`ExpectActualPair`](../reference/contracts/expect-actual-pair.md)
 - [`ImpactGraph`](../reference/contracts/impact-graph.md)
 
 ## Next phase

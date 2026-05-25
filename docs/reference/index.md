@@ -15,7 +15,7 @@ Every `kmp-impact` subcommand with its flags, exit codes, and a runnable example
 
 <div class="card" markdown>
 ### Data Contracts
-The Pydantic v2 models that travel between phases — `FileImpact`, `ImpactGraph`, `UIDiffResult`, `ConsolidatedReport`, and friends.
+The Pydantic v2 models that travel between phases — `FileImpact`, `ImpactGraph`, `UIRegressions`, `ConsolidatedResult`, and friends.
 
 [Open →](contracts/index.md)
 </div>

@@ -73,12 +73,13 @@ If any step legitimately blocks (no APK, no UTG, catalog not touched), the workf
 
 ### Android module name
 
-The workflow tries `:android`, `:app`, `:composeApp`, `:androidApp`, `:android-app`, `:shared:android`, and `:app:android` in order. Override with an environment variable:
+The workflow probes the following module names, in order:
 
-```yaml
-env:
-  KMP_IMPACT_ANDROID_MODULE: ":your-android-module"
+```text
+shared, composeApp, androidApp, app, common, kmm-shared, kmpShared
 ```
+
+If none match, it falls back to `:app`. To support a non-conventional layout, either add a Gradle module alias that matches one of the above, or edit the `Detect Android app module` step in the workflow directly. The reference workflow does not currently expose this list as an env variable.
 
 ### Gradle wrapper
 
@@ -86,7 +87,7 @@ If the project's wrapper is older than the AGP requires (8.7 for AGP 8.x, 9.0 fo
 
 ### DroidBot exploration budget
 
-Defaults are `count = 100`, `timeout = 90`, `policy = dfs_greedy`. Increase for larger apps; the runtime cost scales roughly linearly.
+The DroidBot command is baked into the workflow with `-count 100 -timeout 90 -policy dfs_greedy -grant_perm -is_emulator`. To change the budget, edit the `Run DroidBot on emulator` step directly — these values are not exposed as workflow inputs to keep the run reproducible across PRs.
 
 ## Concurrency and Pages cancellations
 
