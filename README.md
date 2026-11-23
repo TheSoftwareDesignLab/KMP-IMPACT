@@ -4,7 +4,7 @@
 <p align="center">
   <a href="https://github.com/EstebanCastel/KMP-IMPACT-Reviewing-Dependency-Updates-in-Kotlin-Multiplatform/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/EstebanCastel/KMP-IMPACT-Reviewing-Dependency-Updates-in-Kotlin-Multiplatform/actions/workflows/ci.yml/badge.svg"></a>
   <a href="https://github.com/EstebanCastel/KMP-IMPACT-Reviewing-Dependency-Updates-in-Kotlin-Multiplatform/actions/workflows/docs.yml"><img alt="Docs" src="https://github.com/EstebanCastel/KMP-IMPACT-Reviewing-Dependency-Updates-in-Kotlin-Multiplatform/actions/workflows/docs.yml/badge.svg"></a>
-  <a href="https://estebancastel.github.io/KMP-IMPACT-Reviewing-Dependency-Updates-in-Kotlin-Multiplatform/"><img alt="Docs site" src="https://img.shields.io/badge/docs-online-2da44e"></a>
+  <a href="https://thesoftwaredesignlab.github.io/KMP-IMPACT/"><img alt="Docs site" src="https://img.shields.io/badge/docs-online-2da44e"></a>
   <a href="https://github.com/EstebanCastel/KMP-IMPACT-Reviewing-Dependency-Updates-in-Kotlin-Multiplatform/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-blue"></a>
   <img alt="Python" src="https://img.shields.io/badge/python-3.10%2B-3776ab">
   <img alt="Kotlin" src="https://img.shields.io/badge/kotlin-1.9%2B%20%7C%202.x-7f52ff">
@@ -16,7 +16,7 @@
   <a href="#quickstart">Quickstart</a> ·
   <a href="#pipeline">Pipeline</a> ·
   <a href="#github-action">GitHub Action</a> ·
-  <a href="https://estebancastel.github.io/KMP-IMPACT-Reviewing-Dependency-Updates-in-Kotlin-Multiplatform/">Documentation</a>
+  <a href="https://thesoftwaredesignlab.github.io/KMP-IMPACT/">Documentation</a>
 </p>
 
 ---
